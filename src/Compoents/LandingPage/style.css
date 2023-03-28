@@ -75,3 +75,8 @@ video {
 .content-title {
   float: left;
 }
+
+.btn{
+  padding: 10px;
+  font-size: 18px;
+}

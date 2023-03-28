@@ -30,8 +30,8 @@ const LandingPage = () => {
 		<nav>
       <img src={logo} alt="logo" className='logo'/>
 			<ul>
-				<li><button onClick={()=>{navigate(`/findGymPage/${locationData.lati}/${locationData.long}`)}} >Find Gym</button></li>
-				<li><button >About</button></li>
+				<li><button onClick={()=>{navigate(`/findGymPage/${locationData.lati}/${locationData.long}`)}} className="btn" >Find Gym</button></li>
+				<li><button className='btn' >About</button></li>
 			</ul>
 		</nav>
 	</header>

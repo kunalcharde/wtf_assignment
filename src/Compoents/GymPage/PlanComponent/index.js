@@ -8,7 +8,6 @@ const PlanComponent = ({ userId }) => {
           const res = await axios.post(`https://devapi.wtfup.me/gym/plan?gym_id=${userId}`)
           const plandata = res.data.data.filter((data)=> data.plan_type==userId)
           setPlans(plandata)
-          console.log(res.data.data)
         } catch (error) {
           console.log(error)
         }
@@ -16,7 +15,6 @@ const PlanComponent = ({ userId }) => {
       useEffect(() => {
         fetchPlans()
       }, [])
-      console.log(plans)
     return (
         <div className='plan-container'>
             <h1>Choose Membership</h1>

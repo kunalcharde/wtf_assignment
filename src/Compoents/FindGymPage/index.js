@@ -52,6 +52,7 @@ const FindGymPage = () => {
           <h2 >Filter</h2>
           <h3 style={{marginBottom:20,marginTop:10}}>Location</h3>
           <TextField 
+           placeholder="Enter Location"
           />
           <h3 style={{marginBottom:20,marginTop:10}}>Cities</h3>
           <DropDown gymname={gymName} gymData={gymData} />
