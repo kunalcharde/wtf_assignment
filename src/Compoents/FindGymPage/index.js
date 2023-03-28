@@ -13,7 +13,7 @@ const FindGymPage = () => {
   const { lati, long } = useParams();
 
   const nearest_gym_url = `${BASE_URL}gym/nearestgym?lat=${lati}&long=${long}`;
-  const [gymData, setGymData] = useState([]);
+  const [gymData, setGymData] = useState(state);
   const [gymTermsData, setGymTermsData] = useState([]);
   const [gymName, setGymName] = useState([]);
 

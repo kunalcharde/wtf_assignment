@@ -23,7 +23,7 @@ export default function GymCard({gymData}) {
   // const[gymData,setGymData] = React.useState([])
   const navigate = useNavigate()
   const [state,dispatch] = useContext(gymContext)
- 
+ console.log(state)
   return state.map((gymData) => {
     return (
       <Card sx={{ minWidth: 275,marginTop:2,cursor:'pointer'}} key={uuidv4()} onClick={()=> {navigate(`/gympage/${gymData.user_id}`)}}>
