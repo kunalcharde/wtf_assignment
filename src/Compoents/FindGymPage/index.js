@@ -48,7 +48,7 @@ const FindGymPage = () => {
         <Grid item xs={4}>
           <h2>Filter</h2>
           <h3>Location</h3>
-          <DropDown gymname={gymName} />
+          <DropDown gymname={gymName} gymData={gymData} />
         </Grid>
         <Grid item xs={8}>
            <GymCard gymData={gymData}/>

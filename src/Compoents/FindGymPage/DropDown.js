@@ -4,8 +4,23 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
 import { v4 as uuidv4 } from 'uuid';
-export default function DropDown({ gymname }) {
+import { gymContext } from "../../Context/gymContext";
+import { useContext } from "react";
+
+export default function DropDown({ gymname, gymData }) {
+  const [state,dispatch] =useContext(gymContext)
+  
   const cites = gymname.filter((item, index) => gymname.indexOf(item) === index);
+
+  const handleOnchange=(e)=>{
+    console.log(e.target.value)
+    const data = gymData.filter((item) => item.city==e.target.value)
+    console.log(data)
+    dispatch({
+      type: "ADD_GYM",
+      payload: data
+    });
+  }
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
@@ -17,7 +32,7 @@ export default function DropDown({ gymname }) {
           }}
         >
           {cites.map((name) => (
-            <option value={name} key={uuidv4()}>{name}</option>
+            <option value={name} key={uuidv4()} onClick={(e)=>{handleOnchange(e)}}>{name}</option>
           ))}
         </NativeSelect>
       </FormControl>
