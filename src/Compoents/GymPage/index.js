@@ -37,7 +37,9 @@ const GymPage = () => {
          </div>
         </Grid>
         <Grid item xs={6}>
-
+          <Grid sx={{backgroundColor: '#01010'}}>
+            Card Item
+          </Grid>
         </Grid>
       </Grid>
     </div>
