@@ -26,7 +26,7 @@ export default function GymCard({gymData}) {
  console.log(state)
   return state.map((gymData) => {
     return (
-      <Card sx={{ minWidth: 275,marginTop:2,cursor:'pointer'}} key={uuidv4()} onClick={()=> {navigate(`/gympage/${gymData.user_id}`)}}>
+      <Card sx={{ minWidth: 275,marginTop:2,cursor:'pointer',textAlign:'center' }} key={uuidv4()} onClick={()=> {navigate(`/gympage/${gymData.user_id}`)}}>
         <CardContent>
           <Grid container xs={12}>
             <Grid item xs={12}>

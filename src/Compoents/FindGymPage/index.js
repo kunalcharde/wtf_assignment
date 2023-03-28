@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Grid, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
@@ -48,10 +48,14 @@ const FindGymPage = () => {
   return (
     <div>
       <Grid container xs={12}>
-        <Grid item xs={4}>
-          <h2 style={{marginBottom:3}}>Filter</h2>
-          <h3>Location</h3>
+        <Grid item xs={4} sx={{paddingLeft:3}}>
+          <h2 >Filter</h2>
+          <h3 style={{marginBottom:20,marginTop:10}}>Location</h3>
+          <TextField 
+          />
+          <h3 style={{marginBottom:20,marginTop:10}}>Cities</h3>
           <DropDown gymname={gymName} gymData={gymData} />
+
         </Grid>
         <Grid item xs={8}>
            <GymCard gymData={gymData}/>

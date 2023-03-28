@@ -1,0 +1,47 @@
+.plan-container{
+    background-color: #312f2f;
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .plans{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    gap: 1rem;
+    align-items: center;
+  }
+  .plan-card{
+    width: 95%;
+    background-color: brown;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    
+  }
+  .plan-card img{
+    width: 70px;
+  }
+  .plan-info p {
+  margin-bottom: 8px;
+  }
+  .plan-info h5{
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .plan-card .price{
+    font-weight: bold;
+  }

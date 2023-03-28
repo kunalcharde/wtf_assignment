@@ -2,6 +2,7 @@ import { Grid } from '@mui/material'
 import React, { useContext } from 'react'
 import { Navigate, useParams } from 'react-router'
 import { gymContext } from '../../Context/gymContext'
+import PlansComponent from './PlanComponent'
 const GymPage = () => {
    const {user_id} = useParams()
   //  console.log(user_id)
@@ -38,7 +39,7 @@ const GymPage = () => {
         </Grid>
         <Grid item xs={6}>
           <Grid sx={{backgroundColor: '#01010'}}>
-            Card Item
+            <PlansComponent userId={user_id}/>
           </Grid>
         </Grid>
       </Grid>

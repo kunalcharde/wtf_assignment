@@ -26,8 +26,8 @@ export default function DropDown({ gymname, gymData }) {
   }
   // console.log(slectedCity)
   return (
-    <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
+    <Box sx={{ minWidth: 120 ,marginTop:3}}>
+      <FormControl >
         <NativeSelect
           defaultValue={30}
           inputProps={{
