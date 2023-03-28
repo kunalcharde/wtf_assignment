@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material'
 import React, { useContext } from 'react'
-import { useParams } from 'react-router'
+import { Navigate, useParams } from 'react-router'
 import { gymContext } from '../../Context/gymContext'
 const GymPage = () => {
    const {user_id} = useParams()
@@ -8,9 +8,9 @@ const GymPage = () => {
   const [state,dispatch] =useContext(gymContext)
   // console.log(state)
   const Data = state.filter((data)=> data.user_id===user_id)
-  console.log(Data,"GyM Page")
-  const gym = Data[0]
-    
+  // console.log(Data,"GyM Page")
+
+// Card Components
   return (
     <div>
       <Grid container xs={12}>
@@ -23,7 +23,7 @@ const GymPage = () => {
           <h1>Facilites</h1>
           <div style={{display: 'flex',justifyContent:'space-around'}}>
             {
-              Data[0]?.benefits?.map((data,i)=><span key={i}>{data.name}</span>)
+              Data[0]?.benefits.length?Data[0]?.benefits?.map((data,i)=><span key={i}>{data.name}</span>):<span>No Data FOUND</span>
             }
           </div>
          </div>
@@ -31,7 +31,7 @@ const GymPage = () => {
           <h1>Why To Choose WTF</h1>
           <div style={{display: 'flex',justifyContent:'space-around'}}>
             {
-              Data[0]?.benefits?.map((data,i)=><span key={i}>{data.name}</span>)
+              Data[0]?.benefits.length?Data[0]?.benefits?.map((data,i)=><span key={i}>{data.name}</span>):<span>No Data FOUND</span>
             }
           </div>
          </div>

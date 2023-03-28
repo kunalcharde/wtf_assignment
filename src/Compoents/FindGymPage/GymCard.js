@@ -4,7 +4,6 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from "react-router-dom";
@@ -19,13 +18,12 @@ const bull = (
   </Box>
 );
 
+// GYM CARD Component
 export default function GymCard({gymData}) {
   // const[gymData,setGymData] = React.useState([])
   const navigate = useNavigate()
   const [state,dispatch] = useContext(gymContext)
-  // setGymData(state)
-   console.log(state)
-  // console.log(gymData);
+ 
   return state.map((gymData) => {
     return (
       <Card sx={{ minWidth: 275,marginTop:2,cursor:'pointer'}} key={uuidv4()} onClick={()=> {navigate(`/gympage/${gymData.user_id}`)}}>

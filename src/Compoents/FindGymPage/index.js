@@ -9,17 +9,19 @@ import { gymContext } from "../../Context/gymContext";
 
 const FindGymPage = () => {
   const [state,dispatch] = useContext(gymContext)
+  // excessing the Lattitude and Longitude from the URL
   const { lati, long } = useParams();
-  // console.log(lati,long)
+
   const nearest_gym_url = `${BASE_URL}gym/nearestgym?lat=${lati}&long=${long}`;
   const [gymData, setGymData] = useState([]);
   const [gymTermsData, setGymTermsData] = useState([]);
   const [gymName, setGymName] = useState([]);
+
+  // Fetching Data from The API
   useEffect(() => {
     async function fetching() {
       const fetchData = await fetch(nearest_gym_url);
       const ResponseData = await fetchData.json();
-      // console.log(ResponseData)
       setGymData(ResponseData.data);
       setGymTermsData(ResponseData.terms);
       setGymName(ResponseData.data.map((data) => data.city));
@@ -27,10 +29,11 @@ const FindGymPage = () => {
     fetching();
   }, []);
 
-  console.log("Gym Data",gymData)
+  // console.log("Gym Data",gymData)
   // console.log("Gym Name",gymName)
   // console.log("Gym Terms Data",gymTermsData)
 
+  // Setting my data to 
   useEffect(()=>{
     function setData (){
       dispatch({
@@ -46,7 +49,7 @@ const FindGymPage = () => {
     <div>
       <Grid container xs={12}>
         <Grid item xs={4}>
-          <h2>Filter</h2>
+          <h2 style={{marginBottom:3}}>Filter</h2>
           <h3>Location</h3>
           <DropDown gymname={gymName} gymData={gymData} />
         </Grid>

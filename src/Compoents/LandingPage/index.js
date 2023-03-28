@@ -5,6 +5,7 @@ import iphone from '../assets/iphone.png'
 import BackGroundVideo from "../assets/bg-video.mp4"
 import { useNavigate } from 'react-router-dom'
 
+// Landing Page
 const LandingPage = () => {
 
 	const navigate= useNavigate()
