@@ -31,6 +31,17 @@ const FindGymPage = () => {
   // console.log("Gym Name",gymName)
   // console.log("Gym Terms Data",gymTermsData)
 
+  useEffect(()=>{
+    function setData (){
+      dispatch({
+        type: "ADD_GYM",
+        payload: [...gymData]
+      });
+    }
+    setData()
+  },[gymData])
+ 
+
   return (
     <div>
       <Grid container xs={12}>

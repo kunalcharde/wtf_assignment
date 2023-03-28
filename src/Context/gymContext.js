@@ -6,10 +6,10 @@ export const gymContext = createContext()
 const intialValue = []
 
 const reducer = (state,action) =>{
-     console.log(action.type)
+    //  console.log(action.payload)
     switch(action.type){
-            case "ADD_COSTUMER":
-                return [...state,action.payload]
+            case "ADD_GYM":
+                return action.payload
 
             case "DELETE_CUSTOMER" :
                 return state.filter((customer)=> customer.customer_id !== action.payload)

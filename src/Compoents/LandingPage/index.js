@@ -20,9 +20,6 @@ const LandingPage = () => {
 		
 
 	function showPosition(position) {
-		console.log("Latitude: " + position.coords.latitude);
-		console.log("Longitude: " + position.coords.longitude);
-	
 		setLocationData({...locationData,long:position.coords.longitude,lati:position.coords.latitude});
 	  }
 	console.log(locationData)
@@ -32,8 +29,8 @@ const LandingPage = () => {
 		<nav>
       <img src={logo} alt="logo" className='logo'/>
 			<ul>
-				<li><button onClick={()=>{navigate(`/findGymPage/${locationData.lati}/${locationData.long}`)}} >HOME</button></li>
-				<li><button >Find Gym</button></li>
+				<li><button onClick={()=>{navigate(`/findGymPage/${locationData.lati}/${locationData.long}`)}} >Find Gym</button></li>
+				<li><button >About</button></li>
 			</ul>
 		</nav>
 	</header>
