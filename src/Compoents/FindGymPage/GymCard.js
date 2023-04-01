@@ -8,7 +8,8 @@ import { Grid } from "@mui/material";
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from "react-router-dom";
 import { gymContext } from "../../Context/gymContext";
-import { useContext } from "react";
+import { useContext,useEffect,useState } from "react";
+import axios from "axios";
 const bull = (
   <Box
     component="span"
@@ -18,13 +19,30 @@ const bull = (
   </Box>
 );
 
+ 
+
 // GYM CARD Component
-export default function GymCard({gymData}) {
-  // const[gymData,setGymData] = React.useState([])
+export default function GymCard({selectedGYM,selctedCity}) {
+  // const {data} = useContext(gymContext)
+  // const [gym,setGYM] =useState(data)
   const navigate = useNavigate()
-  const [state,dispatch] = useContext(gymContext)
- console.log(state)
-  return state.map((gymData) => {
+  // const fetchPlans = async () => {
+  //   try {
+  //     const res = await axios.get(`https://devapi.wtfup.me/gym/places?Noida`)
+  //     //  const data1 = res.data.data.filter((gym)=> gym?.city==selctedCity)
+  //      const data2 = selectedGYM.filter((gym)=> gym?.city==selctedCity)
+  //     setGYM(data2)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+  useEffect(() => {
+  //   fetchPlans()
+
+    console.log(selctedCity)
+  },[selctedCity])
+
+  return selectedGYM?.map((gymData) => {
     return (
       <Card sx={{ minWidth: 275,marginTop:2,cursor:'pointer',textAlign:'center' }} key={uuidv4()} onClick={()=> {navigate(`/gympage/${gymData.user_id}`)}}>
         <CardContent>

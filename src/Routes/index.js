@@ -8,7 +8,7 @@ const NavRoutes = () => {
     <BrowserRouter>
       <Routes>
         <Route index path="/" element={<LandingPage/>} />
-        <Route path="/findGymPage/:lati/:long" element={<FindGymPage/>} />
+        <Route path="/findGymPage" element={<FindGymPage/>} />
         <Route path="/gympage/:user_id" element={<GymPage/>} />
       </Routes>
     </BrowserRouter>

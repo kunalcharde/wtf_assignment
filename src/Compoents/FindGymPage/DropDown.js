@@ -8,36 +8,36 @@ import { gymContext } from "../../Context/gymContext";
 import { useContext,useState } from "react";
 
 
-// Drop Down Compoent
-export default function DropDown({ gymname, gymData }) {
-  const [state,dispatch] =useContext(gymContext)
-  // const [slectedCity,setSelectedCity] = useState("")
-  const cites = gymname.filter((item, index) => gymname.indexOf(item) === index);
+// // Drop Down Compoent
+export default function DropDown({GymCities,setSelectedCity}) {
+const [city,setCity]= useState([])
+  const {data,terms,location} =useContext(gymContext)
 
-  const handleOnchange=(e)=>{
-    // console.log(e.target.value)
-    const data = gymData.filter((item) => item.city==e.target.value)
-    // setSelectedCity(e.target.value)
-    // console.log(data)
-    dispatch({
-      type: "SINGLE_GYM",
-      payload: data
-    });
+  // const cites = GymCities?.filter((item, index) => GymCities?.indexOf(item) === index);
+
+  const handleChange=(e)=>{
+    const selectedCityValue = e.target.value;
+    console.log(selectedCityValue)
+    setSelectedCity(selectedCityValue);
   }
-  // console.log(slectedCity)
+  React.useEffect(()=>{
+    const cites = GymCities?.filter((item, index) => GymCities?.indexOf(item) === index);
+    setCity(["all",...cites])
+  })
   return (
     <Box sx={{ minWidth: 120 ,marginTop:3}}>
       <FormControl >
         <NativeSelect
-          defaultValue={30}
+
+         onChange={(e)=>{handleChange(e)}}
+          defaultValue={"all"}
           inputProps={{
             name: "city",
             id: "uncontrolled-native",
           }}
         >
-          {cites.map((name) => (
-            <option value={name} key={uuidv4()} onClick={(e)=>{handleOnchange(e)}}>{name}</option>
-          ))}
+           {city?.map((name) => <option value={name} >{name}</option>
+           )}
         </NativeSelect>
       </FormControl>
     </Box>

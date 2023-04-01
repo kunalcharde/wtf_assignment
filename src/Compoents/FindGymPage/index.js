@@ -6,45 +6,22 @@ import { BASE_URL } from "../../SiteData";
 import DropDown from "./DropDown";
 import GymCard from "./GymCard";
 import { gymContext } from "../../Context/gymContext";
-
+import { useNavigate } from "react-router-dom";
 const FindGymPage = () => {
-  const [state,dispatch] = useContext(gymContext)
-  // excessing the Lattitude and Longitude from the URL
-  const { lati, long } = useParams();
 
-  const nearest_gym_url = `${BASE_URL}gym/nearestgym?lat=${lati}&long=${long}`;
-  const [gymData, setGymData] = useState(state);
-  const [gymTermsData, setGymTermsData] = useState([]);
-  const [gymName, setGymName] = useState([]);
+  const {data,terms,location} = useContext(gymContext)
 
-  // Fetching Data from The API
-  useEffect(() => {
-    async function fetching() {
-      const fetchData = await fetch(nearest_gym_url);
-      const ResponseData = await fetchData.json();
-      setGymData(ResponseData.data);
-      setGymTermsData(ResponseData.terms);
-      setGymName(ResponseData.data.map((data) => data.city));
-    }
-    fetching();
-  }, []);
-
-  // console.log("Gym Data",gymData)
-  // console.log("Gym Name",gymName)
-  // console.log("Gym Terms Data",gymTermsData)
-
-  // Setting my data to 
+  const [selctedCity,setSelectedCity]= useState("all")
+  const [selectedGYM,setSelectedGYM]= useState(data)
+  
+  const GymCities = data.map((gym)=> gym.city)
   useEffect(()=>{
-    function setData (){
-      dispatch({
-        type: "ADD_GYM",
-        payload: [...gymData]
-      });
-    }
-    setData()
-  },[gymData])
- 
-
+   
+      let setData= data.filter((gym)=> gym.city==selctedCity)
+      setSelectedGYM(selctedCity=="all"?data:setData)
+    
+    console.log(selctedCity)
+  },[selctedCity])
   return (
     <div>
       <Grid container xs={12}>
@@ -55,11 +32,11 @@ const FindGymPage = () => {
            placeholder="Enter Location"
           />
           <h3 style={{marginBottom:20,marginTop:10}}>Cities</h3>
-          <DropDown gymname={gymName} gymData={gymData} />
+          <DropDown GymCities={GymCities} setSelectedCity={setSelectedCity} />
 
         </Grid>
         <Grid item xs={8}>
-           <GymCard gymData={gymData}/>
+           <GymCard selectedGYM={selectedGYM} selctedCity={selctedCity}/>
         </Grid>
       </Grid>
     </div>

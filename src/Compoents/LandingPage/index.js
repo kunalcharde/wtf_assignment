@@ -4,33 +4,20 @@ import logo from '../assets/logo.png'
 import iphone from '../assets/iphone.png'
 import BackGroundVideo from "../assets/bg-video.mp4"
 import { useNavigate } from 'react-router-dom'
-
+import { useContext } from 'react'
+import { gymContext } from '../../Context/gymContext'
 // Landing Page
 const LandingPage = () => {
-
+	const {data , terms, location} = useContext(gymContext)
+	// console.log(data)
 	const navigate= useNavigate()
-	
-	const [locationData,setLocationData] = useState({long:"",lati:""})
-	
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(showPosition);
-		  } 
-		else {
-			console.log("Geolocation is not supported by this browser.");
-		}
-		
-
-	function showPosition(position) {
-		setLocationData({...locationData,long:position.coords.longitude,lati:position.coords.latitude});
-	  }
-	console.log(locationData)
-  return (
+ return (
     <div>
       <header>
 		<nav>
       <img src={logo} alt="logo" className='logo'/>
 			<ul>
-				<li><button onClick={()=>{navigate(`/findGymPage/${locationData.lati}/${locationData.long}`)}} className="btn" >Find Gym</button></li>
+				<li><button onClick={()=>{navigate(`/findGymPage`)}} className="btn" >Find Gym</button></li>
 				<li><button className='btn' >About</button></li>
 			</ul>
 		</nav>

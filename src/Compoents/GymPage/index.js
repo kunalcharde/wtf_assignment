@@ -3,15 +3,17 @@ import React, { useContext } from 'react'
 import { Navigate, useParams } from 'react-router'
 import { gymContext } from '../../Context/gymContext'
 import PlansComponent from './PlanComponent'
+import { useNavigate } from "react-router-dom";
 const GymPage = () => {
-   const {user_id} = useParams()
-  //  console.log(user_id)
-  const [state,dispatch] =useContext(gymContext)
-  // console.log(state)
-  const Data = state.filter((data)=> data.user_id===user_id)
-  // console.log(Data,"GyM Page")
-
-// Card Components
+  //getting an user_id From URL
+  const {user_id} = useParams()
+  const {data} =useContext(gymContext)
+  const navigate = useNavigate()
+  // console.log(data)
+  if(data==undefined){
+    navigate("/")
+  }
+  const Data = data.filter((data)=> data.user_id===user_id)
   return (
     <div>
       <Grid container xs={12}>
